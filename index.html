@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: 'Playfair Display', Georgia, serif;
+      background: #f5f0e8;
+      color: #3f3a34;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      line-height: 1.7;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 36px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand p {
+      font-size: 1rem;
+      color: #7b7369;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4b443c;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      transition: 0.3s ease;
+    }
+
+    nav a:hover {
+      opacity: 0.6;
+    }
+
+    /* Profile Banner */
+    .hero {
+      margin-top: 42px;
+      background: #fffaf3;
+      border-radius: 24px;
+      padding: 42px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .profile-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #ddd3c4;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.8);
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-info {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .profile-info h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .info-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: #655d54;
+      font-size: 0.95rem;
+    }
+
+    .info-line span::after {
+      content: "•";
+      margin-left: 14px;
+    }
+
+    .info-line span:last-child::after {
+      content: "";
+    }
+
+    /* Section */
+    section {
+      padding: 90px 0 40px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 42px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 40px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .timeline-year {
+      font-size: 1rem;
+      color: #7a7268;
+      text-align: right;
+      padding-top: 3px;
+    }
+
+    .timeline-dot {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timeline-dot::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #9f8f7c;
+      z-index: 2;
+    }
+
+    .timeline-dot::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: calc(100% + 40px);
+      background: rgba(159,143,124,0.25);
+      top: 14px;
+    }
+
+    .timeline-item:last-child .timeline-dot::after {
+      display: none;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .timeline-content p {
+      color: #6d655d;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: #fffaf3;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+
+    .contact-card p {
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      color: #7b7369;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+
+      .container {
+        padding: 0 18px;
+      }
+
+      header {
+        padding: 24px 0;
+      }
+
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .brand h1 {
+        font-size: 1.8rem;
+      }
+
+      .brand p {
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 26px;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-image {
+        width: 110px;
+        height: 110px;
+      }
+
+      .profile-info h2 {
+        font-size: 1.6rem;
+      }
+
+      .info-line {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+
+      .info-line span::after {
+        content: "";
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .timeline-year {
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      .timeline-dot {
+        justify-content: flex-start;
+      }
+
+      .timeline-dot::after {
+        left: 6px;
+      }
+
+      .timeline-content h3 {
+        font-size: 1rem;
+      }
+
+      .timeline-content p {
+        font-size: 0.9rem;
+      }
+
+      .contact-card {
+        padding: 24px;
+      }
+
+      footer {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <div class="brand">
+        <h1>[이름]</h1>
+        <p>[현직 (직업)]</p>
+      </div>
+
+      <nav>
+        <a href="#about">ABOUT</a>
+        <a href="#experience">EXPERIENCE</a>
+        <a href="#education">EDUCATION</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about">
+      <div class="hero">
+        <div class="hero-content">
+
+          <div class="profile-image">
+            <!-- 프로필 이미지 삽입 -->
+            <!-- <img src="profile.jpg" alt="프로필 사진"> -->
+          </div>
+
+          <div class="profile-info">
+            <h2>[이름]</h2>
+
+            <div class="info-line">
+              <span>📱 [연락처 (휴대폰)]</span>
+              <span>📍 [거주지]</span>
+              <span>✉️ [이메일 주소]</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Work History</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-year">2020 - Present</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>[현직 (직업)]</h3>
+            <p>[주요 경력 1]</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2018 - 2020</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Career Experience</h3>
+            <p>[주요 경력 2]</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-year">Graduate</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>[최종 학력]</h3>
+            <p>Academic Background</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-card">
+        <p><strong>Name:</strong> [이름]</p>
+        <p><strong>Gender:</strong> [성별]</p>
+        <p><strong>Birth:</strong> [생년월일]</p>
+        <p><strong>Location:</strong> [거주지]</p>
+        <p><strong>Phone:</strong> [연락처 (휴대폰)]</p>
+        <p><strong>Email:</strong> [이메일 주소]</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 [이름]. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))
+          .scrollIntoView({
+            behavior: 'smooth'
+          });
+      });
+    });
+  </script>
+
+</body>
+</html>
